@@ -1,0 +1,27 @@
+.ui-background {
+    background-color: royalblue;
+    opacity: 20%;
+    height: 40%;
+    color: white;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    z-index: 10;
+    top: 30%;
+}
+
+.ui-content {
+    color: white;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+}
+
+.vr-layer {
+    position: fixed;
+    z-index: 1;
+}
