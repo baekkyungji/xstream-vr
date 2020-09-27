@@ -1,15 +1,16 @@
 import React, {Component} from "react";
 import 'aframe';
 import 'aframe-particle-system-component';
-import {LoggedInArea, Login, SetupProfile} from "./../../Pages"
+import {Login, SetupProfile} from "./../../Pages"
 import * as firebase from "./../../Services/Firebase"
-import {withRouter} from "react-router-dom"
+import {Route, Switch, withRouter} from "react-router-dom"
 import "./PageContainer.css";
 import Space from "./../../Assets/space.jpg";
 
 import {Entity, Scene} from 'aframe-react';
 import Loading from "../../Components/Loading/Loading";
 import Dashboard from "../Dashboard/Dashboard";
+import VirtualWorld from "../Room/VirtualWorld";
 
 class PageContainer extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class PageContainer extends Component {
                 isCompleteProfile = true;
                 snapshot.forEach((snap) => {
                   userData.push(snap.val())
-                })
+                });
               }
 
               else {
@@ -58,7 +59,7 @@ class PageContainer extends Component {
                 isCompleteProfile: isCompleteProfile,
                 user: user,
                 isLoading: false,
-                isLoggedIn : true
+                isLoggedIn: true
               })
             })
         } catch (error) {
@@ -81,6 +82,37 @@ class PageContainer extends Component {
     })
   };
 
+  renderVRSpace = () => {
+    return (
+      <div className="vr-layer">
+        <Scene
+          physics="debug: false"
+          platform="all"
+          light="defaultLightsEnabled: false"
+          vr-mode-ui="enabled: true"
+        >
+          <a-assets>
+            <img id="skyTexture" src={Space}/>
+          </a-assets>
+
+          <Entity primitive="a-light" type="ambient" color="#445451"/>
+          <Entity primitive="a-light" type="point" intensity="2" position="2 4 4"/>
+
+          <Entity primitive="a-sky" height="2048" radius="30" src="#skyTexture" width="2048" animation__rotate={{
+            property: 'rotation',
+            dur: 60000,
+            easing: 'linear',
+            loop: true,
+            to: {x: 0, y: 360, z: 0}
+          }}/>
+          {/*<Entity particle-system={{preset: 'snow'}}/>*/}
+          <Entity light={{type: 'point'}}/>
+        </Scene>
+      </div>
+
+    )
+  }
+
   setProfileCompleted = (status) => {
     this.setState({isCompleteProfile: status})
   };
@@ -94,42 +126,43 @@ class PageContainer extends Component {
         {isLoading && (<Loading/>)}
 
         <div className="ui-content">
-          {!isLoading && !isLoggedIn && (<Login/>)}
-          {!isLoading && isLoggedIn && !isCompleteProfile && (
-            <div className="ui-background">
-              <h1></h1>
-              <SetupProfile userData={userData} setProfileCompleted={this.setProfileCompleted}/>
-            </div>
+          {!isLoading && !isLoggedIn && (
+            <>
+              <Login/>
+              {this.renderVRSpace()}
+            </>
           )}
-          {!isLoading && isLoggedIn && isCompleteProfile && (<Dashboard/>)}
+          {!isLoading && isLoggedIn && !isCompleteProfile && (
+            <>
+              <div className="ui-background">
+                <h1></h1>
+                <SetupProfile userData={userData} setProfileCompleted={this.setProfileCompleted}/>
+              </div>
+              {this.renderVRSpace()}
+            </>
+          )}
+          {!isLoading && isLoggedIn && isCompleteProfile && (
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={(props) => (
+                  <>
+                    <Dashboard userData={userData}/>
+                    {this.renderVRSpace()}
+                  </>
+                )}
+              />
+              <Route
+                exact
+                path="/room/:id"
+                render={(props) => (
+                  <VirtualWorld {...props} userData={userData}/>
+                )}/>
+            </Switch>
+          )
+          }
         </div>
-
-        <div className="vr-layer">
-          <Scene
-            physics="debug: false"
-            platform="all"
-            light="defaultLightsEnabled: false"
-            vr-mode-ui="enabled: true"
-          >
-            <a-assets>
-              <img id="skyTexture" src={Space}/>
-            </a-assets>
-
-            <Entity primitive="a-light" type="ambient" color="#445451"/>
-            <Entity primitive="a-light" type="point" intensity="2" position="2 4 4"/>
-
-            <Entity primitive="a-sky" height="2048" radius="30" src="#skyTexture" width="2048" animation__rotate={{
-              property: 'rotation',
-              dur: 60000,
-              easing: 'linear',
-              loop: true,
-              to: {x: 0, y: 360, z: 0}
-            }}/>
-            {/*<Entity particle-system={{preset: 'snow'}}/>*/}
-            <Entity light={{type: 'point'}}/>
-          </Scene>
-        </div>
-
 
         {/*{!isLoading && isLoggedIn && !isCompleteProfile && (<SetupProfile/>)}*/}
       </div>
