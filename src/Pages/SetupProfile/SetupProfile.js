@@ -49,13 +49,18 @@ class SetupProfile extends Component {
 
   handleOnRegister = async () => {
     const {userData} = this.props;
+    const {profile} = this.state;
+    const registeredUser = {
+      ...userData,
+      ...profile
+    };
     this.setState({isLoading: true});
-    setTimeout( async () => {
+    setTimeout(async () => {
       this.setState({isLoading: false});
       this.props.setProfileCompleted(true);
       await firebase.db.ref("users")
         .child(userData.uid)
-        .set(userData)
+        .set(registeredUser)
     }, 2000);
   };
 

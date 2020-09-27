@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf0afb4b-eee6-48a9-8143-cab68c3aa5ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.afirebaserc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.firebaserc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/afirebase.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/PageContainer/PageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/PageContainer/PageContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Room/VirtualWorld.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Room/VirtualWorld.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/SetupProfile/SetupProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/SetupProfile/SetupProfile.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Pages/Dashboard/Dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
+            <state relative-caret-position="165">
+              <caret line="147" column="104" selection-start-line="147" selection-start-column="104" selection-end-line="147" selection-end-column="104" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -33,10 +28,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pages/Dashboard/Dashboard.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="62" column="1" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pages/SetupProfile/SetupProfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="75" column="42" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
+            <state relative-caret-position="493">
+              <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -53,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pages/PageContainer/PageContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="151" column="14" lean-forward="true" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
+            <state relative-caret-position="237">
+              <caret line="161" column="27" selection-start-line="161" selection-start-column="27" selection-end-line="161" selection-end-column="27" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -94,15 +98,6 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.firebaserc">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.afirebaserc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -160,9 +155,9 @@
         <option value="$PROJECT_DIR$/.firebaserc" />
         <option value="$PROJECT_DIR$/firebase.json" />
         <option value="$PROJECT_DIR$/src/Pages/Room/VirtualWorld.js" />
-        <option value="$PROJECT_DIR$/src/Pages/Dashboard/Dashboard.js" />
-        <option value="$PROJECT_DIR$/src/Pages/SetupProfile/SetupProfile.js" />
         <option value="$PROJECT_DIR$/src/Pages/PageContainer/PageContainer.js" />
+        <option value="$PROJECT_DIR$/src/Pages/SetupProfile/SetupProfile.js" />
+        <option value="$PROJECT_DIR$/src/Pages/Dashboard/Dashboard.js" />
       </list>
     </option>
   </component>
@@ -296,7 +291,7 @@
     <property name="SearchEverywhereHistoryKey" value="Setu&#9;FILE&#9;file:///Users/19057573/Documents/Personal/Hackathon/xstream-vr/src/Pages/SetupProfile/SetupProfile.js&#10;Das&#9;FILE&#9;file:///Users/19057573/Documents/Personal/Hackathon/xstream-vr/src/Pages/Dashboard/Dashboard.js&#10;index&#9;FILE&#9;file:///Users/19057573/Documents/Personal/Hackathon/xstream-vr/src/Pages/index.js&#10;ind&#9;FILE&#9;file:///Users/19057573/Documents/Personal/Hackathon/xstream-vr/node_modules/aframe-react/dist/index.js&#10;Load&#9;FILE&#9;file:///Users/19057573/Documents/Personal/Hackathon/xstream-vr/src/Components/Loading/Loading.js&#10;Page&#9;FILE&#9;file:///Users/19057573/Documents/Personal/Hackathon/xstream-vr/src/Pages/PageContainer/PageContainer.js&#10;Dash&#9;FILE&#9;file:///Users/19057573/Documents/Personal/Hackathon/xstream-vr/src/Pages/Dashboard/Dashboard.js&#10;APp&#9;FILE&#9;file:///Users/19057573/Documents/Personal/Hackathon/xstream-vr/src/App.js&#10;App&#9;FILE&#9;file:///Users/19057573/Documents/Personal/Hackathon/xstream-vr/src/App.css&#10;Firebase&#9;FILE&#9;file:///Users/19057573/Documents/Personal/Hackathon/xstream-vr/src/Services/Firebase.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1601208629631" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1601210374767" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
@@ -402,12 +397,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601140572202</updated>
-      <workItem from="1601140579813" duration="38706000" />
+      <workItem from="1601140579813" duration="40510000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38706000" />
+    <option name="totallyTimeSpent" value="40510000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="37" width="1440" height="798" extended-state="0" />
@@ -425,7 +420,7 @@
       <window_info anchor="bottom" id="SonarLint" order="2" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="4" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.3846154" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.3514329" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" />
       <window_info anchor="bottom" id="Run" order="8" />
@@ -503,13 +498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/Dashboard/Dashboard.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="63" column="22" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -648,16 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/Dashboard/Dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/SetupProfile/SetupProfile.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -665,20 +643,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/SetupProfile/SetupProfile.js">
+    <entry file="file://$PROJECT_DIR$/src/Pages/PageContainer/PageContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="75" column="42" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
+        <state relative-caret-position="237">
+          <caret line="161" column="27" selection-start-line="161" selection-start-column="27" selection-end-line="161" selection-end-column="27" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/PageContainer/PageContainer.js">
+    <entry file="file://$PROJECT_DIR$/src/Pages/SetupProfile/SetupProfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="151" column="14" lean-forward="true" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
+        <state relative-caret-position="493">
+          <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/static/css/main.afa394aa.chunk.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1130" selection-start-column="1130" selection-end-column="1130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/Dashboard/Dashboard.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="62" column="1" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/Dashboard/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="147" column="104" selection-start-line="147" selection-start-column="104" selection-end-line="147" selection-end-column="104" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
