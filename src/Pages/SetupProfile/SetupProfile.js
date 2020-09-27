@@ -3,8 +3,10 @@ import XStreamParticipant from "./../../Assets/xstream-participant.png";
 import XStreamOrganizer from "./../../Assets/xstream-organzier.png";
 import "./SetupProfile.css";
 import {Fade} from "react-reveal";
-import {Button, Modal} from "antd";
+import {Button, Modal, Input} from "antd";
 import 'antd/dist/antd.css';
+import {withRouter} from "react-router-dom"
+import * as firebase from "../../Services/Firebase";
 
 class SetupProfile extends Component {
   constructor(props) {
@@ -15,6 +17,7 @@ class SetupProfile extends Component {
         name: '',
         email: ''
       },
+      isLoading: false
     }
   }
 
@@ -38,18 +41,27 @@ class SetupProfile extends Component {
 
   handleOnCancelRole = () => {
     this.setState({
-    profile: {
-      role: ''
-    }
-  })
+      profile: {
+        role: ''
+      }
+    })
   };
 
-  handleOnRegister = () => {
-
+  handleOnRegister = async () => {
+    const {userData} = this.props;
+    this.setState({isLoading: true});
+    setTimeout( async () => {
+      this.setState({isLoading: false});
+      this.props.setProfileCompleted(true);
+      this.props.history.push('dashboard');
+      await firebase.db.ref("users")
+        .child(userData.uid)
+        .set(userData)
+    }, 2000);
   };
 
   render() {
-    const {profile} = this.state;
+    const {profile, isLoading} = this.state;
     console.log(this.state);
     return (
       <Fade>
@@ -58,7 +70,7 @@ class SetupProfile extends Component {
           <Modal
             className="modal"
             title={'Become ' + profile.role}
-            width={700}
+            width={500}
             visible={profile.role !== ''}
             onOk={this.handleOnRegister}
             onCancel={this.handleOnCancelRole}
@@ -67,13 +79,19 @@ class SetupProfile extends Component {
               <Button key="back" onClick={this.handleOnCancelRole}>
                 Cancel
               </Button>,
-              <Button key="submit" type="primary" onClick={async () => {
+              <Button key="submit" type="primary" loading={isLoading} onClick={async () => {
                 await this.handleOnRegister()
               }}>
                 Register
               </Button>,
             ]}>
 
+            <Input style={{marginBottom: "10px", marginLeft: "5px", marginTop: "10px",}}
+                   placeholder={profile.role + "Institution Name"}/>
+            <Input style={{marginBottom: "10px", marginLeft: "5px", marginTop: "10px"}}
+                   placeholder={profile.role + "Position"}/>
+            <Input style={{marginBottom: "10px", marginLeft: "5px", marginTop: "10px"}}
+                   placeholder={profile.role + "Phone Number"}/>
           </Modal>
 
           <img className="item" width="14%" src={XStreamParticipant} onClick={() => {
@@ -89,4 +107,4 @@ class SetupProfile extends Component {
   }
 }
 
-export default SetupProfile;
+export default withRouter(SetupProfile);

@@ -1,21 +1,22 @@
 import React, {Component} from "react";
 import 'aframe';
 import 'aframe-particle-system-component';
-import {Loading} from "./../../Components"
-import {Login, SetupProfile, Dashboard} from "./../../Pages"
+import {LoggedInArea, Login, SetupProfile} from "./../../Pages"
 import * as firebase from "./../../Services/Firebase"
 import {withRouter} from "react-router-dom"
 import "./PageContainer.css";
 import Space from "./../../Assets/space.jpg";
 
 import {Entity, Scene} from 'aframe-react';
+import Loading from "../../Components/Loading/Loading";
+import Dashboard from "../Dashboard/Dashboard";
 
 class PageContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
-      isLoggedIn: true,
+      isLoading: true,
+      isLoggedIn: false,
       isCompleteProfile: false,
       user: {},
       userData: {},
@@ -23,16 +24,12 @@ class PageContainer extends Component {
   }
 
   componentDidMount = async () => {
-    // await this.checkIsLoggedIn();
-    // setTimeout(() => {
-    //   // this.setState({isLoading: false})
-    // }, 100)
+    await this.checkIsLoggedIn();
   };
 
   checkIsLoggedIn = async () => {
     await firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
-        const isLoggedIn = true;
         try {
           await firebase.db.ref('users').orderByChild('uid').equalTo(user.uid)
             .on('value', snapshot => {
@@ -61,39 +58,50 @@ class PageContainer extends Component {
                 isCompleteProfile: isCompleteProfile,
                 user: user,
                 isLoading: false,
-                isLoggedIn
+                isLoggedIn : true
               })
             })
         } catch (error) {
           this.setState({
             readError: error.message, loadingChats: false,
-            user: user,
+            user: {},
+            userData: {},
             isLoading: false,
+            isLoggedIn: false
           })
         }
       } else {
         this.setState({
-          user: user,
+          user: {},
+          userData: {},
           isLoading: false,
+          isLoggedIn: false
         })
       }
     })
   };
 
+  setProfileCompleted = (status) => {
+    this.setState({isCompleteProfile: status})
+  };
+
   render() {
-    const {isLoading, isLoggedIn, isCompleteProfile} = this.state;
+    const {isLoading, isLoggedIn, isCompleteProfile, userData} = this.state;
     console.log(this.state);
     console.log(this.props);
     return (
       <div>
-        {/*{isLoading && (<Loading/>)}*/}
+        {isLoading && (<Loading/>)}
 
-        <div className="ui-background">
-          <h1> </h1>
-        </div>
         <div className="ui-content">
           {!isLoading && !isLoggedIn && (<Login/>)}
-          {!isLoading && isLoggedIn && (<SetupProfile/>)}
+          {!isLoading && isLoggedIn && !isCompleteProfile && (
+            <div className="ui-background">
+              <h1></h1>
+              <SetupProfile userData={userData} setProfileCompleted={this.setProfileCompleted}/>
+            </div>
+          )}
+          {!isLoading && isLoggedIn && isCompleteProfile && (<Dashboard/>)}
         </div>
 
         <div className="vr-layer">
@@ -116,7 +124,7 @@ class PageContainer extends Component {
               easing: 'linear',
               loop: true,
               to: {x: 0, y: 360, z: 0}
-            }}></Entity>
+            }}/>
             {/*<Entity particle-system={{preset: 'snow'}}/>*/}
             <Entity light={{type: 'point'}}/>
           </Scene>
