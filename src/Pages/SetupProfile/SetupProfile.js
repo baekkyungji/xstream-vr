@@ -53,7 +53,6 @@ class SetupProfile extends Component {
     setTimeout( async () => {
       this.setState({isLoading: false});
       this.props.setProfileCompleted(true);
-      this.props.history.push('dashboard');
       await firebase.db.ref("users")
         .child(userData.uid)
         .set(userData)
