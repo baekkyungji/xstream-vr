@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
-
+import {speakStart} from "./speak";
 ReactDOM.render(
   <BrowserRouter>
-    <App/>
+    <App assistantSpeak={speakStart}/>
   </BrowserRouter>,
   document.getElementById('root')
 );

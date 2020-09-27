@@ -12,6 +12,11 @@ import Loading from "../../Components/Loading/Loading";
 import Dashboard from "../Dashboard/Dashboard";
 import VirtualWorld from "../Room/VirtualWorld";
 
+import SpeechRecognition, {useSpeechRecognition} from 'react-speech-recognition'
+import Dictaphone from "../../Components/Dictaphone/Dictaphone";
+import {speakStart} from "./../../speak";
+
+
 class PageContainer extends Component {
   constructor(props) {
     super(props);
@@ -42,6 +47,7 @@ class PageContainer extends Component {
                 snapshot.forEach((snap) => {
                   userData.push(snap.val())
                 });
+                speakStart("Welcome to XStream XR");
               }
 
               else {
@@ -123,11 +129,15 @@ class PageContainer extends Component {
     console.log(this.props);
     return (
       <div>
-        {isLoading && (<Loading/>)}
+        {isLoading && (
+          <>
+            <Loading/>
+          </>)}
 
         <div className="ui-content">
           {!isLoading && !isLoggedIn && (
             <>
+              {speakStart("Welcome, Please Login first")}
               <Login/>
               {this.renderVRSpace()}
             </>
@@ -136,6 +146,7 @@ class PageContainer extends Component {
             <>
               <div className="ui-background">
                 <h1></h1>
+                {speakStart("Please setup your profile first")}
                 <SetupProfile userData={userData} setProfileCompleted={this.setProfileCompleted}/>
               </div>
               {this.renderVRSpace()}
@@ -157,7 +168,10 @@ class PageContainer extends Component {
                 exact
                 path="/room/:id"
                 render={(props) => (
-                  <VirtualWorld {...props} userData={userData}/>
+                  <>
+                    {speakStart("Joning the event Now")}
+                    <VirtualWorld {...props} userData={userData}/>
+                  </>
                 )}/>
             </Switch>
           )

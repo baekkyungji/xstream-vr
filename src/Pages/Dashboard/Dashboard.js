@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import eventImage from "./../../Assets/vrimage.svg";
 import "./Dashboard.css";
 import XStreamParticipant from "../../Assets/xstream-participant.png";
+import {speakStart} from "./../../speak";
 
 const { Meta } = Card;
 
@@ -57,6 +58,7 @@ class Dashboard extends Component {
       this.setState({isLoading: false});
       await firebase.db.ref('events').child(room.id).child('participants').set(userData);
       await firebase.db.ref('users').child(userData.uid).child('registeredEvents').set(userRegisteredEvents);
+      speakStart("Congratulations! you are registered")
     }, 2000);
   };
 
