@@ -8,6 +8,7 @@ import eventImage from "./../../Assets/vrimage.svg";
 import "./Dashboard.css";
 import XStreamParticipant from "../../Assets/xstream-participant.png";
 import {speakStart} from "./../../speak";
+import {Link, withRouter} from "react-router-dom";
 
 const { Meta } = Card;
 
@@ -20,21 +21,25 @@ class Dashboard extends Component {
           id: 1,
           name: 'Webinar AR/VR',
           description: '10 December 2020 8PM',
+          isLoading: false
         },
         {
           id: 2,
           name: 'Workshop Web',
-          description: '15 December 2020 10AM'
+          description: '15 December 2020 10AM',
+          isLoading: false
         },
         {
           id: 3,
           name: 'Webinar AI',
-          description: '15 December 2020 4PM'
+          description: '15 December 2020 4PM',
+          isLoading: false
         },
         {
           id: 4,
           name: 'Webinar Android',
-          description: '17 December 2020 2PM'
+          description: '17 December 2020 2PM',
+          isLoading: false
         },
         {
           id: 5,
@@ -46,16 +51,19 @@ class Dashboard extends Component {
   }
 
   joinRoom = (room) => {
-    window.location = '/room/' + room.id;
+    this.props.history.push('/room/' + room.id);
   };
 
   handleOnRegister = async (room) => {
     const {userData} = this.props;
-    this.setState({isLoading: true});
+    const {listRoom} = this.state;
+    listRoom[room.id-1].isLoading = true;
+    this.setState({listRoom});
     const userRegisteredEvents = userData.registeredEvents !== undefined ? userData.registeredEvents : [];
     userRegisteredEvents.push(room.id);
     setTimeout( async () => {
-      this.setState({isLoading: false});
+      listRoom[room.id-1].isLoading = false;
+      this.setState({listRoom});
       await firebase.db.ref('events').child(room.id).child('participants').set(userData);
       await firebase.db.ref('users').child(userData.uid).child('registeredEvents').set(userRegisteredEvents);
       speakStart("Congratulations! you are registered")
@@ -76,7 +84,7 @@ class Dashboard extends Component {
           }
           actions={[
             <Button
-              loading={this.state.isLoading}
+              loading={this.state.listRoom[room.id-1].isLoading}
               onClick={ async () => {
                 await this.handleOnRegister(room)
               }}
@@ -84,13 +92,10 @@ class Dashboard extends Component {
               variant="primary"
               className="mt-auto">{userRegisteredEvents.includes(room.id) ? 'Registered' : 'Register'}</Button>,
             <Button
-              loading={this.state.isLoading}
-              onClick={ async () => {
-                await this.joinRoom(room)
-              }}
               disabled={!userRegisteredEvents.includes(room.id)}
               variant="primary"
-              className="mt-auto">Join Event</Button>,
+              className="mt-auto"><Link to={"/room/" + room.id}>Join Event</Link></Button>,
+
           ]}
         >
           <Meta

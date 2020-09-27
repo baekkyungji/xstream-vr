@@ -10,6 +10,7 @@ class VirtualWorld extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isPlaying : true
     };
   }
 
@@ -23,6 +24,21 @@ class VirtualWorld extends React.Component {
   }
 
   render() {
+    console.log(this.state);
+    const stopVideo = () => {
+      this.setState({ isPlaying : false});
+    };
+
+    window.onpopstate = function(event) {
+
+      // "event" object seems to contain value only when the back button is clicked
+      // and if the pop state event fires due to clicks on a button
+      // or a link it comes up as "undefined"
+      window.location = '/';
+      stopVideo();
+      console.log('hjh');
+    };
+
     return (
       <Scene>
         <a-assets>
@@ -59,13 +75,15 @@ class VirtualWorld extends React.Component {
             {/*position={{x: 0, y: 4, z: -9}}*/}
             {/*height="10" width="15"/>*/}
         {/*)}*/}
-
+        {this.state.isPlaying && (
           <Entity
             primitive="a-video"
-            src={Video}
+            src={this.state.isPlaying ? Video : undefined}
             rotation="0 0 0"
             position={{x: 0, y: 4, z: -9}}
             height="10" width="15"/>
+        )}
+
 
         {/*<a-video id="video-screen" src="#video-src" position="-8.5 3 10" width="16" height="9" rotation="0 -212 0" geometry="height:30;width:50"></a-video>*/}
 
