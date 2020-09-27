@@ -144,11 +144,11 @@ class PageContainer extends Component {
           )}
           {!isLoading && isLoggedIn && !isCompleteProfile && (
             <>
-              <div className="ui-background">
-                <h1></h1>
+              {/*<div className="ui-background">*/}
+                {/*<h1></h1>*/}
                 {speakStart("Please setup your profile first")}
                 <SetupProfile userData={userData} setProfileCompleted={this.setProfileCompleted}/>
-              </div>
+              {/*</div>*/}
               {this.renderVRSpace()}
             </>
           )}

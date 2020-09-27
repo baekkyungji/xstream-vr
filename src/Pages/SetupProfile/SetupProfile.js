@@ -22,7 +22,7 @@ class SetupProfile extends Component {
   }
 
   handleOnClickRole = (roleType) => {
-    if (roleType === 'participant') {
+    if (roleType === 'Participant') {
       this.setState({
         profile: {
           role: roleType
@@ -30,7 +30,7 @@ class SetupProfile extends Component {
       })
     }
 
-    if (roleType === 'organizer') {
+    if (roleType === 'Organizer') {
       this.setState({
         profile: {
           role: roleType
@@ -73,7 +73,7 @@ class SetupProfile extends Component {
             visible={profile.role !== ''}
             onOk={this.handleOnRegister}
             onCancel={this.handleOnCancelRole}
-            style={{top: "30%"}}
+            style={{top: "30%", left: "30%"}}
             footer={[
               <Button key="back" onClick={this.handleOnCancelRole}>
                 Cancel
@@ -86,18 +86,18 @@ class SetupProfile extends Component {
             ]}>
 
             <Input style={{marginBottom: "10px", marginLeft: "5px", marginTop: "10px",}}
-                   placeholder={profile.role + "Institution Name"}/>
+                   placeholder={profile.role + " Institution Name"}/>
             <Input style={{marginBottom: "10px", marginLeft: "5px", marginTop: "10px"}}
-                   placeholder={profile.role + "Position"}/>
+                   placeholder={profile.role + " Position"}/>
             <Input style={{marginBottom: "10px", marginLeft: "5px", marginTop: "10px"}}
-                   placeholder={profile.role + "Phone Number"}/>
+                   placeholder={profile.role + " Phone Number"}/>
           </Modal>
 
           <img className="item" width="14%" src={XStreamParticipant} onClick={() => {
-            this.handleOnClickRole('participant');
+            this.handleOnClickRole('Participant');
           }}/>
           <img className="item" width="14%" src={XStreamOrganizer} onClick={() => {
-            this.handleOnClickRole('organizer');
+            this.handleOnClickRole('Organizer');
           }}/>
 
         </div>
