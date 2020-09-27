@@ -1,11 +1,11 @@
 import PageContainer from "./PageContainer/PageContainer";
 import Login from "./Login/Login";
-import Dashboard from "./Dashboard/Dashboard";
+import LoggedInArea from "./LoggedInArea/LoggedInArea";
 import SetupProfile from "./SetupProfile/SetupProfile";
 
 export {
   PageContainer,
   Login,
-  Dashboard,
+  LoggedInArea,
   SetupProfile
 }

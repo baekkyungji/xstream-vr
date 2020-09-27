@@ -1,0 +1,53 @@
+.container-dashboard {
+    position: fixed;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    z-index: 5;
+    height: 40%;
+    top: 5% !important;
+    text-align: center;
+    color: white;
+}
+
+.item-logo {
+    margin: 20px;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.App {
+    text-align: center;
+}
+
+.login--welcome{
+    color: white;
+}
+
+.jumbotron-header{
+    /*background-color: white !important;*/
+    /*background-image: url("./../../Assets/space-header.jpg");*/
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+.center-screen{
+    alignment: center;
+    padding-top: 250px;
+}
+
+.ui-background-dashboard-header {
+    background-color: royalblue;
+    opacity: 20%;
+    height: 40%;
+    color: white;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    z-index: 4;
+    top: 50%;
+}
