@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Fade} from "react-reveal";
 import * as firebase from "./../../Services/Firebase";
-import {Col, Container} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import {Avatar, Button, Card} from "antd";
 import 'antd/dist/antd.css';
 import eventImage from "./../../Assets/vrimage.svg";
@@ -10,7 +10,7 @@ import XStreamParticipant from "../../Assets/xstream-participant.png";
 import {speakStart} from "./../../speak";
 import {Link, withRouter} from "react-router-dom";
 
-const { Meta } = Card;
+const {Meta} = Card;
 
 class Dashboard extends Component {
   constructor(props) {
@@ -57,12 +57,12 @@ class Dashboard extends Component {
   handleOnRegister = async (room) => {
     const {userData} = this.props;
     const {listRoom} = this.state;
-    listRoom[room.id-1].isLoading = true;
+    listRoom[room.id - 1].isLoading = true;
     this.setState({listRoom});
     const userRegisteredEvents = userData.registeredEvents !== undefined ? userData.registeredEvents : [];
     userRegisteredEvents.push(room.id);
-    setTimeout( async () => {
-      listRoom[room.id-1].isLoading = false;
+    setTimeout(async () => {
+      listRoom[room.id - 1].isLoading = false;
       this.setState({listRoom});
       await firebase.db.ref('events').child(room.id).child('participants').set(userData);
       await firebase.db.ref('users').child(userData.uid).child('registeredEvents').set(userRegisteredEvents);
@@ -74,36 +74,36 @@ class Dashboard extends Component {
     const {userData} = this.props;
     const userRegisteredEvents = userData.registeredEvents !== undefined ? userData.registeredEvents : [];
     return (
-        <Card
-          style={{ width: 250, marginLeft: "20px", marginRight: "20px"}}
-          cover={
-            <img
-              alt="example"
-              src={eventImage}
-            />
-          }
-          actions={[
-            <Button
-              loading={this.state.listRoom[room.id-1].isLoading}
-              onClick={ async () => {
-                await this.handleOnRegister(room)
-              }}
-              disabled={userRegisteredEvents.includes(room.id)}
-              variant="primary"
-              className="mt-auto">{userRegisteredEvents.includes(room.id) ? 'Registered' : 'Register'}</Button>,
-            <Button
-              disabled={!userRegisteredEvents.includes(room.id)}
-              variant="primary"
-              className="mt-auto"><Link to={"/room/" + room.id}>Join Event</Link></Button>,
-
-          ]}
-        >
-          <Meta
-            avatar={<Avatar src={XStreamParticipant} />}
-            title={room.name}
-            description={room.description}
+      <Card
+        style={{width: 250, marginLeft: "20px", marginRight: "20px"}}
+        cover={
+          <img
+            alt="example"
+            src={eventImage}
           />
-        </Card>
+        }
+        actions={[
+          <Button
+            loading={this.state.listRoom[room.id - 1].isLoading}
+            onClick={async () => {
+              await this.handleOnRegister(room)
+            }}
+            disabled={userRegisteredEvents.includes(room.id)}
+            variant="primary"
+            className="mt-auto">{userRegisteredEvents.includes(room.id) ? 'Registered' : 'Register'}</Button>,
+          <Button
+            disabled={!userRegisteredEvents.includes(room.id)}
+            variant="primary"
+            className="mt-auto"><Link to={"/room/" + room.id}>Join Event</Link></Button>,
+
+        ]}
+      >
+        <Meta
+          avatar={<Avatar src={XStreamParticipant}/>}
+          title={room.name}
+          description={room.description}
+        />
+      </Card>
     )
   };
 
@@ -112,7 +112,7 @@ class Dashboard extends Component {
     return (
       <div className="container-dashboard">
         {/*<div className="ui-background-dashboard-header">*/}
-          {/*<h1></h1>*/}
+        {/*<h1></h1>*/}
         {/*</div>*/}
         <Avatar src={firebase.auth().currentUser.photoURL}
                 style={{width: "125px", height: "125px"}}
@@ -124,9 +124,11 @@ class Dashboard extends Component {
         <br></br>
         <Button variant="primary" size="sm" onClick={() => firebase.auth().signOut()}>Sign Out</Button>
 
-        <div className="event-list">
-          <Fade up>
-            {/*<Row className="justify-content-md-center">*/}
+
+        {this.props.userData.role === 'Participant' && (
+          <div className="event-list">
+            <Fade up>
+              {/*<Row className="justify-content-md-center">*/}
 
               {listRoom.map((room, i) => {
                 return (
@@ -134,9 +136,21 @@ class Dashboard extends Component {
                 );
               })}
 
-            {/*</Row>*/}
-          </Fade>
-        </div>
+              {/*</Row>*/}
+            </Fade>
+          </div>
+        )}
+
+        {this.props.userData.role === 'Organizer' && (
+          <div className="event-list">
+            <Fade up>
+
+                  <h1 style={{ color: "white", alignSelf: "center", textAlign: "center", marginLeft: "20%", marginTop: "5%"}}>Hello Organizer! For further feature still on progress, stay tuned!</h1>
+
+            </Fade>
+          </div>
+        )}
+
       </div>
     )
   }
